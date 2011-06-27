@@ -1,0 +1,26 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://api-3t.sandbox.paypal.com:443/nvp
+    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_AMT=9.00&AMT=9.00&RETURNURL=http%3a%2f%2fexample.com%2fthank_you&CANCELURL=http%3a%2f%2fexample.com%2fcanceled&PAYMENTREQUEST_0_CURRENCYCODE=USD&CURRENCYCODE=USD&DESC=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_DESC=Awesome%20-%20Monthly%20Subscription&L_BILLINGAGREEMENTDESCRIPTION0=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&PAYMENTREQUEST_0_PAYMENTACTION=Authorization&NOSHIPPING=1&L_BILLINGTYPE0=RecurringPayments&METHOD=SetExpressCheckout
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Sun, 26 Jun 2011 21:44:13 GMT
+      server: 
+      - Apache
+      content-length: 
+      - "136"
+      content-type: 
+      - text/plain; charset=utf-8
+    body: TOKEN=EC%2d7B902269MT603740W&TIMESTAMP=2011%2d06%2d26T21%3a44%3a14Z&CORRELATIONID=d7914d1fd83b9&ACK=Success&VERSION=72%2e0&BUILD=1936884
+    http_version: "1.1"

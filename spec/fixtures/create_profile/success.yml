@@ -1,0 +1,26 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://api-3t.sandbox.paypal.com:443/nvp
+    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_AMT=9.00&AMT=9.00&PAYMENTREQUEST_0_CURRENCYCODE=USD&CURRENCYCODE=USD&DESC=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_DESC=Awesome%20-%20Monthly%20Subscription&L_BILLINGAGREEMENTDESCRIPTION0=Awesome%20-%20Monthly%20Subscription&PAYERID=WTTS5KC2T46YU&TOKEN=EC-2UK36172XH723314S&PROFILEREFERENCE=1234&PROFILESTARTDATE=2011-06-27T07%3a59%3a54Z&MAXFAILEDPAYMENTS=1&AUTOBILLOUTAMT=AddToNextBilling&PAYMENTREQUEST_0_NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&BILLINGFREQUENCY=1&BILLINGPERIOD=Month&METHOD=CreateRecurringPaymentsProfile
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Mon, 27 Jun 2011 10:59:58 GMT
+      server: 
+      - Apache
+      content-length: 
+      - "162"
+      content-type: 
+      - text/plain; charset=utf-8
+    body: PROFILEID=I%2d89LD5VEHEVK4&PROFILESTATUS=ActiveProfile&TIMESTAMP=2011%2d06%2d27T11%3a00%3a01Z&CORRELATIONID=17ea90bec34e6&ACK=Success&VERSION=72%2e0&BUILD=1907759
+    http_version: "1.1"

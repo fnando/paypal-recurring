@@ -1,0 +1,26 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://api-3t.sandbox.paypal.com:443/nvp
+    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_AMT=9.00&AMT=9.00&PAYMENTREQUEST_0_CURRENCYCODE=USD&CURRENCYCODE=USD&DESC=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_DESC=Awesome%20-%20Monthly%20Subscription&L_BILLINGAGREEMENTDESCRIPTION0=Awesome%20-%20Monthly%20Subscription&PAYERID=WTTS5KC2T46YU&TOKEN=EC-7B902269MT603740W&PAYMENTREQUEST_0_PAYMENTACTION=Sale&METHOD=DoExpressCheckoutPayment
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Mon, 27 Jun 2011 00:44:51 GMT
+      server: 
+      - Apache
+      content-length: 
+      - "338"
+      content-type: 
+      - text/plain; charset=utf-8
+    body: TIMESTAMP=2011%2d06%2d27T00%3a44%3a52Z&CORRELATIONID=2b242eadf3e74&ACK=Failure&VERSION=72%2e0&BUILD=1936884&L_ERRORCODE0=10411&L_SHORTMESSAGE0=This%20Express%20Checkout%20session%20has%20expired%2e&L_LONGMESSAGE0=This%20Express%20Checkout%20session%20has%20expired%2e%20%20Token%20value%20is%20no%20longer%20valid%2e&L_SEVERITYCODE0=Error
+    http_version: "1.1"

@@ -1,0 +1,26 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://api-3t.sandbox.paypal.com:443/nvp
+    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&METHOD=GetExpressCheckoutDetails
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Mon, 27 Jun 2011 00:18:10 GMT
+      server: 
+      - Apache
+      content-length: 
+      - "214"
+      content-type: 
+      - text/plain; charset=utf-8
+    body: TIMESTAMP=2011%2d06%2d27T00%3a18%3a11Z&CORRELATIONID=c7975175bbfa4&ACK=Failure&VERSION=72%2e0&BUILD=1936884&L_ERRORCODE0=10410&L_SHORTMESSAGE0=Invalid%20token&L_LONGMESSAGE0=Invalid%20token%2e&L_SEVERITYCODE0=Error
+    http_version: "1.1"

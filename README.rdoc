@@ -1,0 +1,128 @@
+= PayPal Recurring Billing
+
+PayPal Express Checkout API Client for recurring billing.
+
+== Installation
+
+  gem install paypal-recurring
+
+== Usage
+
+First, you need to set up your credentials:
+
+  require "paypal/recurring"
+
+  PayPal::Recurring.configure do |config|
+    config.sandbox = true
+    config.username = "seller_1308793919_biz_api1.simplesideias.com.br"
+    config.password = "1308793931"
+    config.signature = "AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y"
+  end
+
+Then, you can request a new payment authorization:
+
+  ppr = PayPal::Recurring.new({
+    :return_url   => "http://example.com/paypal/thank_you",
+    :cancel_url   => "http://example.com/paypal/canceled",
+    :ipn_url      => "http://example.com/paypal/ipn",
+    :description  => "Awesome - Monthly Subscription",
+    :amount       => "9.00",
+    :currency     => "USD"
+  })
+
+  response = ppr.checkout
+  puts response.checkout_url if response.valid?
+
+You need to redirect your user to the url returned by <tt>response.checkout_url</tt>.
+After the user accepts or rejects your payment request, he will be redirected to one of those urls you specified.
+The return url will receive two parameters: <tt>PAYERID</tt> and <tt>TOKEN</tt>. You can use the <tt>TOKEN</tt>
+parameter to identify your user on your database.
+
+If you need to retrieve information about your buyer, like address or e-mail, you can use the
+<tt>checkout_details()</tt> method.
+
+  ppr = PayPal::Recurring.new(:token => "EC-05C46042TU8306821")
+  response = ppr.checkout_details
+
+Now, you need to request payment. The information you provide here should be exactly the same when you started
+the checkout process.
+
+  ppr = PayPal::Recurring.new({
+    :token       => "EC-05C46042TU8306821",
+    :payer_id    => "WTTS5KC2T46YU",
+    :amount      => "9.00",
+    :description => "Awesome - Monthly Subscription"
+  })
+  response = ppr.request_payment
+  response.approved?
+  response.completed?
+
+Finally, you need to create a new recurring profile.
+
+  ppr = PayPal::Recurring.new({
+    :amount      => "9.00",
+    :currency    => "USD",
+    :description => "Awesome - Monthly Subscription",
+    :ipn_url     => "http://example.com/paypal/ipn",
+    :frequency   => 1,
+    :token       => "EC-05C46042TU8306821",
+    :period      => :monthly,
+    :reference   => "1234",
+    :payer_id    => "WTTS5KC2T46YU",
+    :start_at    => Time.now,
+    :failed      => 1,
+    :outstanding => :next_billing
+  })
+
+  response = ppr.create_recurring_profile
+  puts response.profile_id
+
+You can manage your recurring profile.
+
+  ppr = PayPal::Recurring.new(:profile_id => "I-VCEL6TRG35CU")
+
+  ppr.suspend
+  ppr.reactivate
+  ppr.cancel
+
+=== What information do I need to keep?
+
+You should save two paramaters to your database: <tt>TOKEN</tt> and <tt>PROFILEID</tt>.
+<tt>TOKEN</tt> is required when user returns to your website after he authorizes (or not) the billing process. You
+need to save it so you can find him later. You can remove this info after payment and recurring profile are set.
+
+The <tt>PROFILEID</tt> allows you to manage the recurring profile, like canceling billing when an user don't
+want to use your service anymore.
+
+<b>NOTE:</b> TOKEN will expire after approximately 3 hours.
+
+== TO-DO
+
+* handle Instant Payment Notifications (IPN)
+
+== Maintainer
+
+* Nando Vieira (http://nandovieira.com.br)
+
+== License
+
+(The MIT License)
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

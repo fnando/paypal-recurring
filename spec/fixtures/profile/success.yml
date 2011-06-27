@@ -1,0 +1,26 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://api-3t.sandbox.paypal.com:443/nvp
+    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PROFILEID=I-89LD5VEHEVK4&METHOD=GetRecurringPaymentsProfileDetails
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Mon, 27 Jun 2011 11:20:43 GMT
+      server: 
+      - Apache
+      content-length: 
+      - "947"
+      content-type: 
+      - text/plain; charset=utf-8
+    body: PROFILEID=I%2d89LD5VEHEVK4&STATUS=Cancelled&AUTOBILLOUTAMT=AddToNextBilling&DESC=Awesome%20%2d%20Monthly%20Subscription&MAXFAILEDPAYMENTS=1&SUBSCRIBERNAME=Test%20User&PROFILESTARTDATE=2011%2d06%2d27T07%3a00%3a00Z&PROFILEREFERENCE=1234&NUMCYCLESCOMPLETED=1&NUMCYCLESREMAINING=18446744073709551615&OUTSTANDINGBALANCE=0%2e00&FAILEDPAYMENTCOUNT=0&LASTPAYMENTDATE=2011%2d06%2d27T11%3a00%3a11Z&LASTPAYMENTAMT=9%2e00&TRIALAMTPAID=0%2e00&REGULARAMTPAID=9%2e00&AGGREGATEAMT=9%2e00&AGGREGATEOPTIONALAMT=0%2e00&FINALPAYMENTDUEDATE=1970%2d01%2d01T00%3a00%3a00Z&TIMESTAMP=2011%2d06%2d27T11%3a20%3a44Z&CORRELATIONID=bd01cda849f4d&ACK=Success&VERSION=72%2e0&BUILD=1907759&BILLINGPERIOD=Month&BILLINGFREQUENCY=1&TOTALBILLINGCYCLES=0&CURRENCYCODE=USD&AMT=9%2e00&SHIPPINGAMT=0%2e00&TAXAMT=0%2e00&REGULARBILLINGPERIOD=Month&REGULARBILLINGFREQUENCY=1&REGULARTOTALBILLINGCYCLES=0&REGULARCURRENCYCODE=USD&REGULARAMT=9%2e00&REGULARSHIPPINGAMT=0%2e00&REGULARTAXAMT=0%2e00
+    http_version: "1.1"

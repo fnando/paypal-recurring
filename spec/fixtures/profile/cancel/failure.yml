@@ -1,0 +1,26 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://api-3t.sandbox.paypal.com:443/nvp
+    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&ACTION=Cancel&PROFILEID=I-89LD5VEHEVK4&METHOD=ManageRecurringPaymentsProfileStatus
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Mon, 27 Jun 2011 11:18:34 GMT
+      server: 
+      - Apache
+      content-length: 
+      - "387"
+      content-type: 
+      - text/plain; charset=utf-8
+    body: TIMESTAMP=2011%2d06%2d27T11%3a18%3a34Z&CORRELATIONID=d56246b888833&ACK=Failure&VERSION=72%2e0&BUILD=1907759&L_ERRORCODE0=11556&L_SHORTMESSAGE0=Invalid%20profile%20status%20for%20cancel%20action%3b%20profile%20should%20be%20active%20or%20suspended&L_LONGMESSAGE0=Invalid%20profile%20status%20for%20cancel%20action%3b%20profile%20should%20be%20active%20or%20suspended&L_SEVERITYCODE0=Error
+    http_version: "1.1"
