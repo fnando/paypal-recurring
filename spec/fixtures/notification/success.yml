@@ -1,0 +1,32 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://www.sandbox.paypal.com:443/cgi-bin/webscr?cmd=_notify-validate
+    body: test_ipn=1&payment_type=echeck&payment_date=06%3a16%3a11%20Jun%2027%2c%202011%20PDT&payment_status=Completed&pending_reason=echeck&address_status=confirmed&payer_status=verified&first_name=John&last_name=Smith&payer_email=buyer%40paypalsandbox.com&payer_id=TESTBUYERID01&address_name=John%20Smith&address_country=United%20States&address_country_code=US&address_zip=95131&address_state=CA&address_city=San%20Jose&address_street=123%2c%20any%20street&business=seller%40paypalsandbox.com&receiver_email=seller%40paypalsandbox.com&receiver_id=TESTSELLERID1&residence_country=US&item_name=something&item_number=AK-1234&quantity=1&shipping=3.04&tax=2.02&mc_currency=USD&mc_fee=0.44&mc_gross=12.34&txn_type=web_accept&txn_id=116271316&notify_version=2.1&custom=xyz123&invoice=abc1234&charset=windows-1252&verify_sign=AvgHA1TpBJYQMa-x3XsZYuQd7MkKAMUFy7f2a9G4UNFmNHHXGnfAFi3l&cmd=_notify-validate
+    headers:
+      user-agent:
+      - PayPal::Recurring/0.1.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 27 Jun 2011 17:37:09 GMT
+      server:
+      - Apache
+      set-cookie:
+      - c9MWDuvPtT9GIMyPc3jwol1VSlO=EShGvdSJTkQTmhIi4jIAvW9REPYfLjRSo3BqPdRvBymVBvHIai4jnMHE9UzQDrz7FgAtLCUw0V0VroudhtcfoaNLca2TZq61mMSzEHPHgwAj5ON8rmHCr_IjY_AkKI885AFFLW%7c-PiLEQg9LK_E6xg7biKrMLHv97B5cP5yT2R1l6g_ZNq-3SDSCAm-9VQdvpJSnrGNtfsrrG%7cvdBU3UXz8sDrfFIOKP_zwmNkSm8nNcKCATxNvMpGb4VOdGI4Sjia0YCorXMBWxpjKuAip0%7c1309196230; domain=.paypal.com; path=/; Secure; HttpOnly
+      - cookie_check=yes; expires=Thu, 24-Jun-2021 17:37:10 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+      - navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+      - navlns=0.0; expires=Sun, 22-Jun-2031 17:37:10 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+      - Apache=10.72.109.11.1309196229102128; path=/; expires=Wed, 19-Jun-41 17:37:09 GMT
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/html; charset=UTF-8
+    body: VERIFIED
+    http_version: "1.1"

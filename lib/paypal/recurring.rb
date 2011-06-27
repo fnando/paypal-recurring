@@ -1,13 +1,13 @@
 require "net/https"
 require "cgi"
 require "uri"
-require "logger"
 require "ostruct"
 require "time"
 
 module PayPal
   module Recurring
     autoload :Base, "paypal/recurring/base"
+    autoload :Notification, "paypal/recurring/notification"
     autoload :Request, "paypal/recurring/request"
     autoload :Response, "paypal/recurring/response"
     autoload :Version, "paypal/recurring/version"
@@ -44,12 +44,15 @@ module PayPal
       #
       attr_accessor :signature
 
-      # Set application logger. By default, will send output to +STDOUT+.
+      # Set seller id. Will be used to verify IPN.
       #
-      attr_accessor :logger
-    end
+      #
+      attr_accessor :seller_id
 
-    self.logger = Logger.new(STDOUT)
+      # The seller e-mail. Will be used to verify IPN.
+      #
+      attr_accessor :email
+    end
 
     # Just a shortcut for <tt>PayPal::Recurring::Base.new</tt>.
     #

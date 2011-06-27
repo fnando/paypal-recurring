@@ -1,0 +1,32 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://www.sandbox.paypal.com:443/cgi-bin/webscr?cmd=_notify-validate
+    body: cmd=_notify-validate
+    headers: 
+      user-agent: 
+      - PayPal::Recurring/0.1.0
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Mon, 27 Jun 2011 17:39:42 GMT
+      server: 
+      - Apache
+      set-cookie: 
+      - c9MWDuvPtT9GIMyPc3jwol1VSlO=FYMA2gxaecqXl8Q9SSeevuaQcqfcQcwNGw_shFaqV4wYiWT3ZUcQ4O8NLvXqevPJfliR0yse8Z4bzZ8A37MQKM6Q_ci6wnYOkfGZSxZYa_hNLMvR6QHnGyW6u94YxhYQpgu0VG%7cySXso7WZVjU8pXiTJS488DAO3YqW5S6DsAZMY8TN22H5J8gW1As5DlqX1pm60R5dWee5wm%7cdMLFsFZz_xjN2U4nbQ71pdvMUEch5_rqq4NReBSNMz7j3ry9JJhQ1J0X6pqjinKs-kO5NG%7c1309196387; domain=.paypal.com; path=/; Secure; HttpOnly
+      - cookie_check=yes; expires=Thu, 24-Jun-2021 17:39:47 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+      - navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+      - navlns=0.0; expires=Sun, 22-Jun-2031 17:39:47 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+      - Apache=10.72.109.11.1309196382543853; path=/; expires=Wed, 19-Jun-41 17:39:42 GMT
+      transfer-encoding: 
+      - chunked
+      content-type: 
+      - text/html; charset=UTF-8
+    body: INVALID
+    http_version: "1.1"

@@ -57,12 +57,14 @@ module PayPal
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"
 
+      attr_accessor :uri
+
       # Do a POST request to PayPal API.
       # The +method+ argument is the name of the API method you want to invoke.
       # For instance, if you want to request a new checkout token, you may want
       # to do something like:
       #
-      #   response = request.post(:express_checkout)
+      #   response = request.run(:express_checkout)
       #
       # We normalize the methods name. For a list of what's being covered, refer to
       # PayPal::Recurring::Request::METHODS constant.
@@ -70,13 +72,25 @@ module PayPal
       # The params hash can use normalized names. For a list, check the
       # PayPal::Recurring::Request::ATTRIBUTES constant.
       #
-      def post(method, params = {})
+      def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
-        request = Net::HTTP::Post.new(uri.request_uri)
-        request["User-Agent"] = "PayPal::Recurring/#{PayPal::Recurring::Version::STRING}"
-        request.form_data = params
-        response = client.request(request)
+        response = post(params)
         Response.process(method, response)
+      end
+
+      #
+      #
+      def request
+        @request ||= Net::HTTP::Post.new(uri.request_uri).tap do |http|
+          http["User-Agent"] = "PayPal::Recurring/#{PayPal::Recurring::Version::STRING}"
+        end
+      end
+
+      #
+      #
+      def post(params = {})
+        request.form_data = params
+        client.request(request)
       end
 
       # Join params and normalize attribute names.

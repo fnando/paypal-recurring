@@ -19,7 +19,7 @@ describe PayPal::Recurring::Request do
   describe "#post" do
     let(:request) {
       FakeWeb.register_uri :post, "https://api-3t.sandbox.paypal.com/nvp", :status => 200
-      subject.post(:checkout)
+      subject.run(:checkout)
       CGI.parse(FakeWeb.last_request.body)
     }
 

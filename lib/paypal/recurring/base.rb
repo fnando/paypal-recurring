@@ -44,7 +44,7 @@ module PayPal
       #
       def checkout
         params = collect(:amount, :return_url, :cancel_url, :currency, :description, :ipn_url).merge(:payment_action => "Authorization", :no_shipping => 1, :L_BILLINGTYPE0 => "RecurringPayments")
-        request.post(:checkout, params)
+        request.run(:checkout, params)
       end
 
       # Suspend a recurring profile.
@@ -54,7 +54,7 @@ module PayPal
       #   response = ppr.suspend
       #
       def suspend
-        request.post(:manage_profile, :action => :suspend, :profile_id => profile_id)
+        request.run(:manage_profile, :action => :suspend, :profile_id => profile_id)
       end
 
       # Reactivate a suspended recurring profile.
@@ -63,7 +63,7 @@ module PayPal
       #   response = ppr.reactivate
       #
       def reactivate
-        request.post(:manage_profile, :action => :reactivate, :profile_id => profile_id)
+        request.run(:manage_profile, :action => :reactivate, :profile_id => profile_id)
       end
 
       # Cancel a recurring profile.
@@ -73,7 +73,7 @@ module PayPal
       #   response = ppr.cancel
       #
       def cancel
-        request.post(:manage_profile, :action => :cancel, :profile_id => profile_id)
+        request.run(:manage_profile, :action => :cancel, :profile_id => profile_id)
       end
 
       # Return checkout details.
@@ -82,7 +82,7 @@ module PayPal
       #   response = ppr.checkout_details
       #
       def checkout_details
-        request.post(:details, :token => token)
+        request.run(:details, :token => token)
       end
 
       # Request payment.
@@ -98,7 +98,7 @@ module PayPal
       #
       def request_payment
         params = collect(:amount, :return_url, :cancel_url, :ipn_url, :currency, :description, :payer_id, :token).merge(:payment_action => "Sale")
-        request.post(:payment, params)
+        request.run(:payment, params)
       end
 
       # Create a recurring billing profile.
@@ -122,7 +122,7 @@ module PayPal
       #
       def create_recurring_profile
         params = collect(:amount, :currency, :description, :payer_id, :token, :reference, :start_at, :failed, :outstanding, :ipn_url, :frequency, :period, :email)
-        request.post(:create_profile, params)
+        request.run(:create_profile, params)
       end
 
       # Retrieve information about existing recurring profile.
@@ -131,7 +131,7 @@ module PayPal
       #   response = ppr.profile
       #
       def profile
-        request.post(:profile, :profile_id => profile_id)
+        request.run(:profile, :profile_id => profile_id)
       end
 
       private

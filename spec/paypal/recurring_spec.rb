@@ -1,12 +1,6 @@
 require "spec_helper"
 
 describe PayPal::Recurring do
-  describe ".logger" do
-    it "has a default logging" do
-      PayPal::Recurring.logger.should be_a(Logger)
-    end
-  end
-
   describe ".new" do
     it "instantiates PayPal::Recurring::Base" do
       PayPal::Recurring.new.should be_a(PayPal::Recurring::Base)
