@@ -5,8 +5,11 @@ module PayPal
       attr_accessor :cancel_url
       attr_accessor :currency
       attr_accessor :description
+      attr_accessor :email
       attr_accessor :failed
       attr_accessor :frequency
+      attr_accessor :initial_amount
+      attr_accessor :initial_amount_action
       attr_accessor :ipn_url
       attr_accessor :outstanding
       attr_accessor :payer_id
@@ -16,7 +19,6 @@ module PayPal
       attr_accessor :return_url
       attr_accessor :start_at
       attr_accessor :token
-      attr_accessor :email
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -104,24 +106,26 @@ module PayPal
       # Create a recurring billing profile.
       #
       #   ppr = PayPal::Recurring.new({
-      #     :amount      => "9.00",
-      #     :currency    => "USD",
-      #     :description => "Awesome - Monthly Subscription",
-      #     :ipn_url     => "http://example.com/paypal/ipn",
-      #     :frequency   => 1,
-      #     :token       => "EC-05C46042TU8306821",
-      #     :period      => :monthly,
-      #     :reference   => "1234",
-      #     :payer_id    => "WTTS5KC2T46YU",
-      #     :start_at    => Time.now,
-      #     :failed      => 1,
-      #     :outstanding => :next_billing
+      #     :amount                => "9.00",
+      #     :initial_amount        => "9.00",
+      #     :initial_amount_action => :cancel,
+      #     :currency              => "USD",
+      #     :description           => "Awesome - Monthly Subscription",
+      #     :ipn_url               => "http://example.com/paypal/ipn",
+      #     :frequency             => 1,
+      #     :token                 => "EC-05C46042TU8306821",
+      #     :period                => :monthly,
+      #     :reference             => "1234",
+      #     :payer_id              => "WTTS5KC2T46YU",
+      #     :start_at              => Time.now,
+      #     :failed                => 1,
+      #     :outstanding           => :next_billing
       #   })
       #
       #   response = ppr.create_recurring_profile
       #
       def create_recurring_profile
-        params = collect(:amount, :currency, :description, :payer_id, :token, :reference, :start_at, :failed, :outstanding, :ipn_url, :frequency, :period, :email)
+        params = collect(:amount, :initial_amount, :initial_amount_action, :currency, :description, :payer_id, :token, :reference, :start_at, :failed, :outstanding, :ipn_url, :frequency, :period, :email)
         request.run(:create_profile, params)
       end
 

@@ -20,7 +20,8 @@ module PayPal
           :period              => :BILLINGPERIOD,
           :frequency           => :BILLINGFREQUENCY,
           :currency            => :CURRENCYCODE,
-          :amount              => :AMT
+          :amount              => :AMT,
+          :initial_amount      => :AGGREGATEOPTIONALAMT
         )
 
         OUTSTANDING = {

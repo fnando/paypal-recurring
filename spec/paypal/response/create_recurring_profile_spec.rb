@@ -6,18 +6,20 @@ describe PayPal::Recurring::Response::Profile do
 
     subject {
       ppr = PayPal::Recurring.new({
-        :amount      => "9.00",
-        :currency    => "USD",
-        :description => "Awesome - Monthly Subscription",
-        :ipn_url     => "http://example.com/paypal/ipn",
-        :frequency   => 1,
-        :token       => "EC-2UK36172XH723314S",
-        :period      => :monthly,
-        :reference   => "1234",
-        :payer_id    => "WTTS5KC2T46YU",
-        :start_at    => Time.now,
-        :failed      => 1,
-        :outstanding => :next_billing
+        :amount                => "9.00",
+        :initial_amount        => "9.00",
+        :initial_amount_action => :cancel,
+        :currency              => "USD",
+        :description           => "Awesome - Monthly Subscription",
+        :ipn_url               => "http://example.com/paypal/ipn",
+        :frequency             => 1,
+        :token                 => "EC-2UK36172XH723314S",
+        :period                => :monthly,
+        :reference             => "1234",
+        :payer_id              => "WTTS5KC2T46YU",
+        :start_at              => Time.now,
+        :failed                => 1,
+        :outstanding           => :next_billing
       })
       ppr.create_recurring_profile
     }

@@ -98,5 +98,14 @@ describe PayPal::Recurring::Request do
       subject.normalize_params(:action => :suspend).should == {:ACTION => "Suspend"}
       subject.normalize_params(:action => :reactivate).should == {:ACTION => "Reactivate"}
     end
+
+    it "normalizes initial amount" do
+      subject.normalize_params(:initial_amount => "9.00").should == {:INITAMT => "9.00"}
+    end
+
+    it "normalizes initial amount action" do
+      subject.normalize_params(:initial_amount_action => :cancel).should == {:FAILEDINITAMTACTION => "CancelOnFailure"}
+      subject.normalize_params(:initial_amount_action => :continue).should == {:FAILEDINITAMTACTION => "ContinueOnFailure"}
+    end
   end
 end

@@ -10,6 +10,11 @@ module PayPal
         :manage_profile => "ManageRecurringPaymentsProfileStatus"
       }
 
+      INITIAL_AMOUNT_ACTIONS = {
+        :cancel   => "CancelOnFailure",
+        :continue => "ContinueOnFailure"
+      }
+
       ACTIONS = {
         :cancel     => "Cancel",
         :suspend    => "Suspend",
@@ -28,31 +33,33 @@ module PayPal
       }
 
       ATTRIBUTES = {
-        :action         => "ACTION",
-        :amount         => ["PAYMENTREQUEST_0_AMT", "AMT"],
-        :billing_type   => "L_BILLINGTYPE0",
-        :cancel_url     => "CANCELURL",
-        :currency       => ["PAYMENTREQUEST_0_CURRENCYCODE", "CURRENCYCODE"],
-        :description    => ["DESC", "PAYMENTREQUEST_0_DESC", "L_BILLINGAGREEMENTDESCRIPTION0"],
-        :email          => "EMAIL",
-        :failed         => "MAXFAILEDPAYMENTS",
-        :frequency      => "BILLINGFREQUENCY",
-        :ipn_url        => ["PAYMENTREQUEST_0_NOTIFYURL", "NOTIFYURL"],
-        :method         => "METHOD",
-        :no_shipping    => "NOSHIPPING",
-        :outstanding    => "AUTOBILLOUTAMT",
-        :password       => "PWD",
-        :payer_id       => "PAYERID",
-        :payment_action => "PAYMENTREQUEST_0_PAYMENTACTION",
-        :period         => "BILLINGPERIOD",
-        :profile_id     => "PROFILEID",
-        :reference      => "PROFILEREFERENCE",
-        :return_url     => "RETURNURL",
-        :signature      => "SIGNATURE",
-        :start_at       => "PROFILESTARTDATE",
-        :token          => "TOKEN",
-        :username       => "USER",
-        :version        => "VERSION",
+        :action                => "ACTION",
+        :amount                => ["PAYMENTREQUEST_0_AMT", "AMT"],
+        :billing_type          => "L_BILLINGTYPE0",
+        :cancel_url            => "CANCELURL",
+        :currency              => ["PAYMENTREQUEST_0_CURRENCYCODE", "CURRENCYCODE"],
+        :description           => ["DESC", "PAYMENTREQUEST_0_DESC", "L_BILLINGAGREEMENTDESCRIPTION0"],
+        :email                 => "EMAIL",
+        :failed                => "MAXFAILEDPAYMENTS",
+        :frequency             => "BILLINGFREQUENCY",
+        :initial_amount        => "INITAMT",
+        :initial_amount_action => "FAILEDINITAMTACTION",
+        :ipn_url               => ["PAYMENTREQUEST_0_NOTIFYURL", "NOTIFYURL"],
+        :method                => "METHOD",
+        :no_shipping           => "NOSHIPPING",
+        :outstanding           => "AUTOBILLOUTAMT",
+        :password              => "PWD",
+        :payer_id              => "PAYERID",
+        :payment_action        => "PAYMENTREQUEST_0_PAYMENTACTION",
+        :period                => "BILLINGPERIOD",
+        :profile_id            => "PROFILEID",
+        :reference             => "PROFILEREFERENCE",
+        :return_url            => "RETURNURL",
+        :signature             => "SIGNATURE",
+        :start_at              => "PROFILESTARTDATE",
+        :token                 => "TOKEN",
+        :username              => "USER",
+        :version               => "VERSION",
       }
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"
@@ -151,6 +158,10 @@ module PayPal
 
       def build_action(value) # :nodoc:
         ACTIONS.fetch(value.to_sym, value) if value
+      end
+
+      def build_initial_amount_action(value) # :nodoc:
+        INITIAL_AMOUNT_ACTIONS.fetch(value.to_sym, value) if value
       end
     end
   end

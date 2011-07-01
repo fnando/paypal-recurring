@@ -27,6 +27,7 @@ describe PayPal::Recurring::Response::Profile do
     its(:frequency) { should == "1" }
     its(:currency) { should == "USD" }
     its(:amount) { should == "9.00" }
+    its(:initial_amount) { should == "0.00" }
   end
 
   context "when failure" do
