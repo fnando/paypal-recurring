@@ -53,7 +53,7 @@ module PayPal
         :payment_action        => "PAYMENTREQUEST_0_PAYMENTACTION",
         :period                => "BILLINGPERIOD",
         :profile_id            => "PROFILEID",
-        :reference             => "PROFILEREFERENCE",
+        :reference             => ["PROFILEREFERENCE", "PAYMENTREQUEST_0_CUSTOM", "PAYMENTREQUEST_0_INVNUM"],
         :return_url            => "RETURNURL",
         :signature             => "SIGNATURE",
         :start_at              => "PROFILESTARTDATE",

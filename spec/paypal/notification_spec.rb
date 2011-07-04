@@ -1,6 +1,16 @@
 require "spec_helper"
 
 describe PayPal::Recurring::Notification do
+  it "detects express checkout" do
+    subject.params[:txn_type] = "express_checkout"
+    subject.should be_express_checkout
+  end
+
+  it "detects recurring payment" do
+    subject.params[:txn_type] = "recurring_payment"
+    subject.should be_recurring_payment
+  end
+
   context "when successful" do
     use_vcr_cassette "notification/success"
 

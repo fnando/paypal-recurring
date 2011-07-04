@@ -107,5 +107,9 @@ describe PayPal::Recurring::Request do
       subject.normalize_params(:initial_amount_action => :cancel).should == {:FAILEDINITAMTACTION => "CancelOnFailure"}
       subject.normalize_params(:initial_amount_action => :continue).should == {:FAILEDINITAMTACTION => "ContinueOnFailure"}
     end
+
+    it "normalizes reference" do
+      subject.normalize_params(:reference => "abc").should == {:PROFILEREFERENCE => "abc", :PAYMENTREQUEST_0_CUSTOM => "abc", :PAYMENTREQUEST_0_INVNUM => "abc"}
+    end
   end
 end

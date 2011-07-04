@@ -13,6 +13,18 @@ module PayPal
         end
       end
 
+      def type
+        params[:txn_type]
+      end
+
+      def express_checkout?
+        type == "express_checkout"
+      end
+
+      def recurring_payment?
+        type == "recurring_payment"
+      end
+
       def request
         @request ||= PayPal::Recurring::Request.new.tap do |request|
           request.uri = URI.parse("#{PayPal::Recurring.site_endpoint}?cmd=_notify-validate")
@@ -24,7 +36,7 @@ module PayPal
       end
 
       def valid?
-        completed? && verified? && params[:receiver_email] == PayPal::Recurring.email && params[:receiver_id] == PayPal::Recurring.seller_id && params[:txn_type] == "recurring_payment"
+        completed? && verified? && params[:receiver_email] == PayPal::Recurring.email && params[:receiver_id] == PayPal::Recurring.seller_id
       end
 
       def completed?
