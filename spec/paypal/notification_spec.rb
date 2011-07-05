@@ -11,6 +11,23 @@ describe PayPal::Recurring::Notification do
     subject.should be_recurring_payment
   end
 
+  describe "#reference" do
+    it "returns from recurring IPN" do
+      subject.params[:rp_invoice_id] = "abc"
+      subject.reference.should == "abc"
+    end
+
+    it "returns from custom field" do
+      subject.params[:custom] = "abc"
+      subject.reference.should == "abc"
+    end
+
+    it "returns from invoice field" do
+      subject.params[:invoice] = "abc"
+      subject.reference.should == "abc"
+    end
+  end
+
   context "when successful" do
     use_vcr_cassette "notification/success"
 

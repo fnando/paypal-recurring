@@ -11,6 +11,7 @@ module PayPal
     autoload :Request, "paypal/recurring/request"
     autoload :Response, "paypal/recurring/response"
     autoload :Version, "paypal/recurring/version"
+    autoload :Utils, "paypal/recurring/utils"
 
     ENDPOINTS = {
        :sandbox => {

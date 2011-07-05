@@ -2,24 +2,9 @@ module PayPal
   module Recurring
     module Response
       class Base
-        attr_accessor :response
+        extend PayPal::Recurring::Utils
 
-        def self.mapping(options = {})
-          options.each do |to, from|
-            class_eval <<-RUBY
-              def #{to}
-                @#{to} ||= begin
-                  from = [#{from.inspect}].flatten
-                  name = from.find {|name| params[name]}
-                  value = nil
-                  value = params[name] if name
-                  value = send("build_#{to}", value) if respond_to?("build_#{to}", true)
-                  value
-                end
-              end
-            RUBY
-          end
-        end
+        attr_accessor :response
 
         mapping(
           :token           => :TOKEN,
