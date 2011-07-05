@@ -17,7 +17,8 @@ module PayPal
         :payment_date   => [:time_created, :payment_date],
         :seller_id      => :receiver_id,
         :email          => :receiver_email,
-        :initial_amount => :initial_payment_amount
+        :initial_amount => :initial_payment_amount,
+        :payer_email    => :payer_email
       })
 
       def initialize(params = {})
