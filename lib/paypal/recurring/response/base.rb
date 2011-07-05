@@ -9,8 +9,11 @@ module PayPal
             class_eval <<-RUBY
               def #{to}
                 @#{to} ||= begin
-                  value = params[:#{from}]
-                  value = send("build_#{to}", params[:#{from}]) if respond_to?("build_#{to}", true)
+                  from = [#{from.inspect}].flatten
+                  name = from.find {|name| params[name]}
+                  value = nil
+                  value = params[name] if name
+                  value = send("build_#{to}", value) if respond_to?("build_#{to}", true)
                   value
                 end
               end

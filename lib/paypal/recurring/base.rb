@@ -99,7 +99,7 @@ module PayPal
       #   response.completed? && response.approved?
       #
       def request_payment
-        params = collect(:amount, :return_url, :cancel_url, :ipn_url, :currency, :description, :payer_id, :token).merge(:payment_action => "Sale")
+        params = collect(:amount, :return_url, :cancel_url, :ipn_url, :currency, :description, :payer_id, :token, :reference).merge(:payment_action => "Sale")
         request.run(:payment, params)
       end
 

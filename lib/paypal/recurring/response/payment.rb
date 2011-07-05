@@ -6,7 +6,8 @@ module PayPal
           :status    => :PAYMENTINFO_0_PAYMENTSTATUS,
           :amount    => :PAYMENTINFO_0_AMT,
           :fees      => :PAYMENTINFO_0_FEEAMT,
-          :seller_id => :PAYMENTINFO_0_SECUREMERCHANTACCOUNTID
+          :seller_id => :PAYMENTINFO_0_SECUREMERCHANTACCOUNTID,
+          :reference => [:PROFILEREFERENCE, :PAYMENTREQUEST_0_CUSTOM, :PAYMENTREQUEST_0_INVNUM]
         )
 
         def completed?
