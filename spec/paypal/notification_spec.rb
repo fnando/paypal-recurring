@@ -11,6 +11,62 @@ describe PayPal::Recurring::Notification do
     subject.should be_recurring_payment
   end
 
+  it "detects recurring payment profile" do
+    subject.params[:txn_type] = "recurring_payment_profile_created"
+    subject.should be_recurring_payment_profile
+  end
+
+  it "normalizes payment date" do
+    subject.params[:payment_date] = "20:37:06 Jul 04, 2011 PDT" # PDT = -0700
+    subject.paid_at.strftime("%Y-%m-%d %H:%M:%S").should == "2011-07-05 03:37:06"
+  end
+
+  it "returns currency" do
+    subject.params[:mc_currency] = "BRL"
+    subject.currency.should == "BRL"
+  end
+
+  describe "#payment_date" do
+    it "returns date from time_created field" do
+      subject.params[:time_created] = "2011-07-05"
+      subject.payment_date.should == "2011-07-05"
+    end
+
+    it "returns date from payment_date field" do
+      subject.params[:payment_date] = "2011-07-05"
+      subject.payment_date.should == "2011-07-05"
+    end
+  end
+
+  describe "#fee" do
+    it "returns fee from mc_fee field" do
+      subject.params[:mc_fee] = "0.56"
+      subject.fee.should == "0.56"
+    end
+
+    it "returns fee from payment_fee field" do
+      subject.params[:payment_fee] = "0.56"
+      subject.fee.should == "0.56"
+    end
+  end
+
+  describe "#amount" do
+    it "returns amount from amount field" do
+      subject.params[:amount] = "9.00"
+      subject.amount.should == "9.00"
+    end
+
+    it "returns amount from mc_gross field" do
+      subject.params[:mc_gross] = "9.00"
+      subject.amount.should == "9.00"
+    end
+
+    it "returns amount from payment_gross field" do
+      subject.params[:payment_gross] = "9.00"
+      subject.amount.should == "9.00"
+    end
+  end
+
   describe "#reference" do
     it "returns from recurring IPN" do
       subject.params[:rp_invoice_id] = "abc"

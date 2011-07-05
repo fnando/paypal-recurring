@@ -16,7 +16,8 @@ module PayPal
         :status         => :payment_status,
         :payment_date   => [:time_created, :payment_date],
         :seller_id      => :receiver_id,
-        :email          => :receiver_email
+        :email          => :receiver_email,
+        :initial_amount => :initial_payment_amount
       })
 
       def initialize(params = {})
@@ -35,6 +36,10 @@ module PayPal
 
       def recurring_payment?
         type == "recurring_payment"
+      end
+
+      def recurring_payment_profile?
+        type == "recurring_payment_profile_created"
       end
 
       def request
@@ -56,11 +61,11 @@ module PayPal
       end
 
       def next_payment_date
-        Time.parse(params[:next_payment_date]) if params[:next_payment_date]
+        self.class.convert_to_time(params[:next_payment_date]) if params[:next_payment_date]
       end
 
       def paid_at
-        Time.parse(payment_date) if payment_date
+        self.class.convert_to_time(payment_date) if payment_date
       end
 
       def verified?
