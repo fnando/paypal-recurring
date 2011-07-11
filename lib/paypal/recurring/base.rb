@@ -11,6 +11,7 @@ module PayPal
       attr_accessor :initial_amount
       attr_accessor :initial_amount_action
       attr_accessor :ipn_url
+      attr_accessor :locale
       attr_accessor :outstanding
       attr_accessor :payer_id
       attr_accessor :period
@@ -45,7 +46,20 @@ module PayPal
       #   response.checkout_url
       #
       def checkout
-        params = collect(:amount, :return_url, :cancel_url, :currency, :description, :ipn_url).merge(:payment_action => "Authorization", :no_shipping => 1, :L_BILLINGTYPE0 => "RecurringPayments")
+        params = collect(
+          :locale,
+          :amount,
+          :return_url,
+          :cancel_url,
+          :currency,
+          :description,
+          :ipn_url
+        ).merge(
+          :payment_action => "Authorization",
+          :no_shipping => 1,
+          :L_BILLINGTYPE0 => "RecurringPayments"
+        )
+
         request.run(:checkout, params)
       end
 

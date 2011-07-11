@@ -45,6 +45,7 @@ module PayPal
         :initial_amount        => "INITAMT",
         :initial_amount_action => "FAILEDINITAMTACTION",
         :ipn_url               => ["PAYMENTREQUEST_0_NOTIFYURL", "NOTIFYURL"],
+        :locale                => "LOCALECODE",
         :method                => "METHOD",
         :no_shipping           => "NOSHIPPING",
         :outstanding           => "AUTOBILLOUTAMT",
@@ -162,6 +163,10 @@ module PayPal
 
       def build_initial_amount_action(value) # :nodoc:
         INITIAL_AMOUNT_ACTIONS.fetch(value.to_sym, value) if value
+      end
+
+      def build_locale(value) # :nodoc:
+        value.to_s.upcase
       end
     end
   end

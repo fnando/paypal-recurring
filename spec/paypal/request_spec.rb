@@ -111,5 +111,9 @@ describe PayPal::Recurring::Request do
     it "normalizes reference" do
       subject.normalize_params(:reference => "abc").should == {:PROFILEREFERENCE => "abc", :PAYMENTREQUEST_0_CUSTOM => "abc", :PAYMENTREQUEST_0_INVNUM => "abc"}
     end
+
+    it "normalizes locale" do
+      subject.normalize_params(:locale => :us).should == {:LOCALECODE => "US"}
+    end
   end
 end
