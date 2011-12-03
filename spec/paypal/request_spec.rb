@@ -83,6 +83,12 @@ describe PayPal::Recurring::Request do
       subject.normalize_params(:period => :yearly).should == {:BILLINGPERIOD => "Year"}
     end
 
+    it "normalizes trial period" do
+      subject.normalize_params(:trial_period => :monthly).should == {:TRIALBILLINGPERIOD => "Month"}
+      subject.normalize_params(:trial_period => :daily).should == {:TRIALBILLINGPERIOD => "Day"}
+      subject.normalize_params(:trial_period => :yearly).should == {:TRIALBILLINGPERIOD => "Year"}
+    end
+    
     it "normalizes start at" do
       date = Time.parse("2011-06-26 15:13:00")
       subject.normalize_params(:start_at => date).should == {:PROFILESTARTDATE => "2011-06-26T15:13:00Z"}
