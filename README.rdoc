@@ -77,6 +77,26 @@ Finally, you need to create a new recurring profile.
   response = ppr.create_recurring_profile
   puts response.profile_id
 
+(Optionally) You can specify a trial period, frequency, and length.
+
+  ppr = PayPal::Recurring.new({
+    :amount          => "9.00",
+    :currency        => "USD",
+    :description     => "Awesome - Monthly Subscription",
+    :ipn_url         => "http://example.com/paypal/ipn",
+    :frequency       => 1,
+    :token           => "EC-05C46042TU8306821",
+    :period          => :monthly,
+    :reference       => "1234",
+    :payer_id        => "WTTS5KC2T46YU",
+    :start_at        => Time.now,
+    :failed          => 1,
+    :outstanding     => :next_billing,
+    :trial_length    => 1,
+    :trial_period    => :monthly,
+    :trial_frequency => 1
+  })
+  
 You can manage your recurring profile.
 
   ppr = PayPal::Recurring.new(:profile_id => "I-VCEL6TRG35CU")
