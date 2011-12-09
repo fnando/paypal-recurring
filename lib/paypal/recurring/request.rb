@@ -7,7 +7,6 @@ module PayPal
         :details        => "GetExpressCheckoutDetails",
         :create_profile => "CreateRecurringPaymentsProfile",
         :profile        => "GetRecurringPaymentsProfileDetails",
-        :manage_profile => "ManageRecurringPaymentsProfileStatus"
         :manage_profile => "ManageRecurringPaymentsProfileStatus",
         :update_profile => "UpdateRecurringPaymentsProfile",
         :refund         => "RefundTransaction"
