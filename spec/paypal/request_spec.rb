@@ -79,12 +79,14 @@ describe PayPal::Recurring::Request do
 
     it "normalizes period" do
       subject.normalize_params(:period => :monthly).should == {:BILLINGPERIOD => "Month"}
+      subject.normalize_params(:period => :monthly).should == {:BILLINGPERIOD => "Weekly"}
       subject.normalize_params(:period => :daily).should == {:BILLINGPERIOD => "Day"}
       subject.normalize_params(:period => :yearly).should == {:BILLINGPERIOD => "Year"}
     end
 
     it "normalizes trial period" do
       subject.normalize_params(:trial_period => :monthly).should == {:TRIALBILLINGPERIOD => "Month"}
+      subject.normalize_params(:trial_period => :monthly).should == {:TRIALBILLINGPERIOD => "Weekly"}
       subject.normalize_params(:trial_period => :daily).should == {:TRIALBILLINGPERIOD => "Day"}
       subject.normalize_params(:trial_period => :yearly).should == {:TRIALBILLINGPERIOD => "Year"}
     end

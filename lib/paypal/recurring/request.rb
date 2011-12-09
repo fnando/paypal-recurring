@@ -23,12 +23,14 @@ module PayPal
 
       PERIOD = {
         :daily   => "Day",
+        :weekly  => "Weekly",
         :monthly => "Month",
         :yearly  => "Year"
       }
       
       TRIAL_PERIOD = {
         :daily    => "Day",
+        :weekly   => "Weekly",
         :monthly  => "Month",
         :yearly   => "Year"
       }
@@ -36,6 +38,13 @@ module PayPal
       OUTSTANDING = {
         :next_billing => "AddToNextBilling",
         :no_auto      => "NoAutoBill"
+      }
+      
+      REFUNDTYPE  = {
+        :full     => "Full",
+        :partial  => "Partial",
+        :external => "ExternalDispute",
+        :other    => "Other",
       }
 
       ATTRIBUTES = {
