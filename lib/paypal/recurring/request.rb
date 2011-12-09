@@ -8,6 +8,9 @@ module PayPal
         :create_profile => "CreateRecurringPaymentsProfile",
         :profile        => "GetRecurringPaymentsProfileDetails",
         :manage_profile => "ManageRecurringPaymentsProfileStatus"
+        :manage_profile => "ManageRecurringPaymentsProfileStatus",
+        :update_profile => "UpdateRecurringPaymentsProfile",
+        :refund         => "RefundTransaction"
       }
 
       INITIAL_AMOUNT_ACTIONS = {
@@ -70,10 +73,12 @@ module PayPal
         :period                => "BILLINGPERIOD",
         :profile_id            => "PROFILEID",
         :reference             => ["PROFILEREFERENCE", "PAYMENTREQUEST_0_CUSTOM", "PAYMENTREQUEST_0_INVNUM"],
+        :refund_type           => "REFUNDTYPE",
         :return_url            => "RETURNURL",
         :signature             => "SIGNATURE",
         :start_at              => "PROFILESTARTDATE",
         :token                 => "TOKEN",
+        :transaction_id        => "TRANSACTIONID",
         :trial_frequency       => "TRIALBILLINGFREQUENCY",
         :trial_length          => "TRIALTOTALBILLINGCYCLES",
         :trial_period          => "TRIALBILLINGPERIOD",
@@ -178,6 +183,10 @@ module PayPal
       def build_outstanding(value) # :nodoc:
         OUTSTANDING.fetch(value.to_sym, value) if value
       end
+      
+      def build_refundtype(value) # :nodoc:	
+        REFUNDTYPE.fetch(value.to_sym, value) if value    	
+      end    	
 
       def build_action(value) # :nodoc:
         ACTIONS.fetch(value.to_sym, value) if value

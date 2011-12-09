@@ -5,6 +5,7 @@ module PayPal
       attr_accessor :cancel_url
       attr_accessor :currency
       attr_accessor :description
+      attr_accessor :note
       attr_accessor :email
       attr_accessor :failed
       attr_accessor :frequency
@@ -21,6 +22,11 @@ module PayPal
       attr_accessor :return_url
       attr_accessor :start_at
       attr_accessor :token
+      attr_accessor :transaction_id
+      attr_accessor :item_category
+      attr_accessor :item_name
+      attr_accessor :item_amount
+      attr_accessor :item_quantity
       attr_accessor :trial_frequency
       attr_accessor :trial_length
       attr_accessor :trial_period
@@ -117,7 +123,17 @@ module PayPal
       #   response.completed? && response.approved?
       #
       def request_payment
-        params = collect(:amount, :return_url, :cancel_url, :ipn_url, :currency, :description, :payer_id, :token, :reference).merge(:payment_action => "Sale")
+        params = collect(
+            :amount,
+            :return_url,
+            :cancel_url, 
+            :ipn_url,
+            :currency, 
+            :description, 
+            :payer_id, 
+            :token, 
+            :reference
+            ).merge(:payment_action => "Sale")
         request.run(:payment, params)
       end
 
@@ -146,8 +162,57 @@ module PayPal
       #   response = ppr.create_recurring_profile
       #
       def create_recurring_profile
-        params = collect(:amount, :initial_amount, :initial_amount_action, :currency, :description, :payer_id, :token, :reference, :start_at, :failed, :outstanding, :ipn_url, :frequency, :period, :email, :trial_length, :trial_period, :trial_frequency)
+        params = collect(
+          :amount, 
+          :initial_amount, 
+          :initial_amount_action, 
+          :currency, 
+          :description, 
+          :payer_id, 
+          :token, 
+          :reference, 
+          :start_at, 
+          :failed, 
+          :outstanding, 
+          :ipn_url, 
+          :frequency, 
+          :period, 
+          :email, 
+          :trial_length, 
+          :trial_period, 
+          :trial_frequency
+        )
         request.run(:create_profile, params)
+      end
+      
+      # Update a recurring billing profile.
+      #
+      #   ppr = PayPal::Recurring.new({
+      #     :amount                => "99.00",
+      #     :currency              => "USD",
+      #     :description           => "Awesome - Monthly Subscription",
+      #     :note                  => "Changed plan to Gold",
+      #     :ipn_url               => "http://example.com/paypal/ipn",
+      #     :reference             => "1234",
+      #     :profile_id            => "I-VCEL6TRG35CU",
+      #     :start_at              => Time.now,
+      #     :outstanding           => :next_billing
+      #   })
+      #
+      #   response = ppr.update_recurring_profile
+      #
+      def update_recurring_profile
+        params = collect(:amount, 
+          :currency, 
+          :description, 
+          :note, 
+          :profile_id, 
+          :reference, 
+          :start_at, 
+          :outstanding, 
+          :ipn_url, 
+          :email)
+        request.run(:update_profile, params)
       end
 
       # Retrieve information about existing recurring profile.
