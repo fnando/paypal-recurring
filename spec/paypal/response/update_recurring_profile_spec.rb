@@ -20,7 +20,6 @@ describe PayPal::Recurring::Response::Profile do
     }
 
     it { should be_valid }
-
     its(:profile_id) { should == "I-89LD5VEHEVK4" }
     its(:status) { should == "ActiveProfile" }
     its(:errors) { should be_empty }
