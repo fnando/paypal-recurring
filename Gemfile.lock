@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    paypal-recurring (0.1.7)
+    paypal-recurring (0.1.8)
 
 GEM
   remote: http://rubygems.org/
