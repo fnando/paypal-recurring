@@ -63,7 +63,11 @@ module PayPal
           :cancel_url,
           :currency,
           :description,
-          :ipn_url
+          :ipn_url,
+          :item_category,
+          :item_name,
+          :item_amount,
+          :item_quantity
         ).merge(
           :payment_action => "Authorization",
           :no_shipping => 1,
@@ -132,7 +136,11 @@ module PayPal
             :description, 
             :payer_id, 
             :token, 
-            :reference
+            :reference,
+            :item_category,
+            :item_name,
+            :item_amount,
+            :item_quantity
             ).merge(:payment_action => "Sale")
         request.run(:payment, params)
       end
@@ -180,7 +188,11 @@ module PayPal
           :email, 
           :trial_length, 
           :trial_period, 
-          :trial_frequency
+          :trial_frequency,
+          :item_category,
+          :item_name,
+          :item_amount,
+          :item_quantity
         )
         request.run(:create_profile, params)
       end
