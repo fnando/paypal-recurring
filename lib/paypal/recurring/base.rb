@@ -30,6 +30,7 @@ module PayPal
       attr_accessor :trial_frequency
       attr_accessor :trial_length
       attr_accessor :trial_period
+      attr_accessor :trial_amount
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -164,7 +165,8 @@ module PayPal
       #     :outstanding           => :next_billing,
       #     :trial_period          => :monthly,
       #     :trial_length          => 1,
-      #     :trial_frequency       => 1
+      #     :trial_frequency       => 1,
+      #     :trial_amount          => 0.00
       #   })
       #
       #   response = ppr.create_recurring_profile
@@ -189,6 +191,7 @@ module PayPal
           :trial_length, 
           :trial_period, 
           :trial_frequency,
+          :trial_amount,
           :item_category,
           :item_name,
           :item_amount,

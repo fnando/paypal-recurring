@@ -83,6 +83,7 @@ module PayPal
         :start_at              => "PROFILESTARTDATE",
         :token                 => "TOKEN",
         :transaction_id        => "TRANSACTIONID",
+        :trial_amount          => "TRIALAMT",
         :trial_frequency       => "TRIALBILLINGFREQUENCY",
         :trial_length          => "TRIALTOTALBILLINGCYCLES",
         :trial_period          => "TRIALBILLINGPERIOD",
