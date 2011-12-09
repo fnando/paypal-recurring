@@ -6,19 +6,21 @@ module PayPal
       attr_reader :params
 
       mapping({
-        :type           => :txn_type,
-        :transaction_id => :txn_id,
-        :fee            => [:mc_fee, :payment_fee],
-        :reference      => [:rp_invoice_id, :custom, :invoice],
-        :payment_id     => :recurring_payment_id,
-        :amount         => [:amount, :mc_gross, :payment_gross],
-        :currency       => :mc_currency,
-        :status         => :payment_status,
-        :payment_date   => [:time_created, :payment_date],
-        :seller_id      => :receiver_id,
-        :email          => :receiver_email,
-        :initial_amount => :initial_payment_amount,
-        :payer_email    => :payer_email
+        :type             => :txn_type,
+        :transaction_id   => :txn_id,
+        :fee              => [:mc_fee, :payment_fee],
+        :reference        => [:rp_invoice_id, :custom, :invoice],
+        :payment_id       => :recurring_payment_id,
+        :amount           => [:amount, :mc_gross, :payment_gross],
+        :currency         => :mc_currency,
+        :status           => :payment_status,
+        :pending_reason   => :pending_reason,
+        :profile_status   => :profile_status,
+        :payment_date     => [:time_created, :payment_date],
+        :seller_id        => :receiver_id,
+        :email            => :receiver_email,
+        :initial_amount   => :initial_payment_amount,
+        :payer_email      => :payer_email
       })
 
       def initialize(params = {})

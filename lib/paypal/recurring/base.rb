@@ -17,6 +17,7 @@ module PayPal
       attr_accessor :period
       attr_accessor :profile_id
       attr_accessor :reference
+      attr_accessor :refund_type
       attr_accessor :return_url
       attr_accessor :start_at
       attr_accessor :token
@@ -156,6 +157,31 @@ module PayPal
       #
       def profile
         request.run(:profile, :profile_id => profile_id)
+      end
+      
+      # Request a refund.
+      #   ppr = PayPal::Recurring.new(:profile_id => "I-VCEL6TRG35CU")
+      #   ppr.refund({
+      #     :transaction_id => "ABCEDFGH",
+      #     :reference      => "1234",
+      #     :refund_type    => :partial,
+      #     :amount         => "9.00",
+      #     :currency       => "USD"
+      #   })
+      #
+      #   response = ppr.refund
+      #
+      def refund
+        params = collect(
+          :transaction_id,
+          :reference,
+          :refund_type,
+          :amount,
+          :currency,
+          :note,
+        )
+
+        request.run(:refund, params)
       end
 
       private
