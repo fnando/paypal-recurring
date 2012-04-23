@@ -96,7 +96,7 @@ Finally, you need to create a new recurring profile.
     :trial_period    => :monthly,
     :trial_frequency => 1
   })
-  
+
 You can manage your recurring profile.
 
   ppr = PayPal::Recurring.new(:profile_id => "I-VCEL6TRG35CU")
@@ -111,14 +111,10 @@ You should save two paramaters to your database: <tt>TOKEN</tt> and <tt>PROFILEI
 <tt>TOKEN</tt> is required when user returns to your website after he authorizes (or not) the billing process. You
 need to save it so you can find him later. You can remove this info after payment and recurring profile are set.
 
-The <tt>PROFILEID</tt> allows you to manage the recurring profile, like canceling billing when an user don't
+The <tt>PROFILEID</tt> allows you to manage the recurring profile, like cancelling billing when an user don't
 want to use your service anymore.
 
 <b>NOTE:</b> TOKEN will expire after approximately 3 hours.
-
-== TO-DO
-
-* handle Instant Payment Notifications (IPN)
 
 == Maintainer
 

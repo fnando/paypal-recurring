@@ -244,15 +244,14 @@ module PayPal
       end
 
       # Request a refund.
-      #   ppr = PayPal::Recurring.new(:profile_id => "I-VCEL6TRG35CU")
-      #   ppr.refund({
+      #   ppr = PayPal::Recurring.new({
+      #     :profile_id => "I-VCEL6TRG35CU",
       #     :transaction_id => "ABCEDFGH",
       #     :reference      => "1234",
       #     :refund_type    => :partial,
       #     :amount         => "9.00",
       #     :currency       => "USD"
       #   })
-      #
       #   response = ppr.refund
       #
       def refund
