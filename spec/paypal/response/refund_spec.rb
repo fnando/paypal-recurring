@@ -22,8 +22,6 @@ describe PayPal::Recurring::Response::Profile do
     its(:net_amount) { should eql("8.29") }
     its(:amount) { should eql("9.00") }
     its(:currency) { should eql("BRL") }
-    its(:status) { should eql("BRL") }
-    its(:pending_reason) { should eql("BRL") }
   end
 
   context "when failure" do
