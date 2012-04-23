@@ -29,7 +29,7 @@ module PayPal
         :monthly => "Month",
         :yearly  => "Year"
       }
-      
+
       TRIAL_PERIOD = {
         :daily    => "Day",
         :weekly   => "Weekly",
@@ -41,12 +41,12 @@ module PayPal
         :next_billing => "AddToNextBilling",
         :no_auto      => "NoAutoBill"
       }
-      
-      REFUNDTYPE  = {
+
+      REFUND_TYPE  = {
         :full     => "Full",
         :partial  => "Partial",
         :external => "ExternalDispute",
-        :other    => "Other",
+        :other    => "Other"
       }
 
       ATTRIBUTES = {
@@ -176,7 +176,7 @@ module PayPal
       def build_period(value) # :nodoc:
         PERIOD.fetch(value.to_sym, value) if value
       end
-      
+
       def build_trial_period(value)
         TRIAL_PERIOD.fetch(value.to_sym, value) if value
       end
@@ -188,10 +188,10 @@ module PayPal
       def build_outstanding(value) # :nodoc:
         OUTSTANDING.fetch(value.to_sym, value) if value
       end
-      
-      def build_refundtype(value) # :nodoc:	
-        REFUNDTYPE.fetch(value.to_sym, value) if value    	
-      end    	
+
+      def build_refund_type(value) # :nodoc:
+        REFUND_TYPE.fetch(value.to_sym, value) if value
+      end
 
       def build_action(value) # :nodoc:
         ACTIONS.fetch(value.to_sym, value) if value

@@ -129,20 +129,21 @@ module PayPal
       #
       def request_payment
         params = collect(
-            :amount,
-            :return_url,
-            :cancel_url, 
-            :ipn_url,
-            :currency, 
-            :description, 
-            :payer_id, 
-            :token, 
-            :reference,
-            :item_category,
-            :item_name,
-            :item_amount,
-            :item_quantity
-            ).merge(:payment_action => "Sale")
+          :amount,
+          :return_url,
+          :cancel_url,
+          :ipn_url,
+          :currency,
+          :description,
+          :payer_id,
+          :token,
+          :reference,
+          :item_category,
+          :item_name,
+          :item_amount,
+          :item_quantity
+        ).merge(:payment_action => "Sale")
+
         request.run(:payment, params)
       end
 
@@ -173,23 +174,23 @@ module PayPal
       #
       def create_recurring_profile
         params = collect(
-          :amount, 
-          :initial_amount, 
-          :initial_amount_action, 
-          :currency, 
-          :description, 
-          :payer_id, 
-          :token, 
-          :reference, 
-          :start_at, 
-          :failed, 
-          :outstanding, 
-          :ipn_url, 
-          :frequency, 
-          :period, 
-          :email, 
-          :trial_length, 
-          :trial_period, 
+          :amount,
+          :initial_amount,
+          :initial_amount_action,
+          :currency,
+          :description,
+          :payer_id,
+          :token,
+          :reference,
+          :start_at,
+          :failed,
+          :outstanding,
+          :ipn_url,
+          :frequency,
+          :period,
+          :email,
+          :trial_length,
+          :trial_period,
           :trial_frequency,
           :trial_amount,
           :item_category,
@@ -199,7 +200,7 @@ module PayPal
         )
         request.run(:create_profile, params)
       end
-      
+
       # Update a recurring billing profile.
       #
       #   ppr = PayPal::Recurring.new({
@@ -217,16 +218,19 @@ module PayPal
       #   response = ppr.update_recurring_profile
       #
       def update_recurring_profile
-        params = collect(:amount, 
-          :currency, 
-          :description, 
-          :note, 
-          :profile_id, 
-          :reference, 
-          :start_at, 
-          :outstanding, 
-          :ipn_url, 
-          :email)
+        params = collect(
+          :amount,
+          :currency,
+          :description,
+          :note,
+          :profile_id,
+          :reference,
+          :start_at,
+          :outstanding,
+          :ipn_url,
+          :email
+        )
+
         request.run(:update_profile, params)
       end
 
@@ -238,7 +242,7 @@ module PayPal
       def profile
         request.run(:profile, :profile_id => profile_id)
       end
-      
+
       # Request a refund.
       #   ppr = PayPal::Recurring.new(:profile_id => "I-VCEL6TRG35CU")
       #   ppr.refund({
@@ -258,7 +262,7 @@ module PayPal
           :refund_type,
           :amount,
           :currency,
-          :note,
+          :note
         )
 
         request.run(:refund, params)

@@ -4,14 +4,14 @@ module PayPal
       class Refund < Base
         mapping(
           :transaction_id => :REFUNDTRANSACTIONID,
-          :feerefund      => :FEEREFUNDAMT,
-          :grossrefund    => :GROSSREFUNDAMT,
-          :netrefund      => :NETREFUNDAMT,
-          :amount         => :TOTALREFUNDEDAMT,
-          :cunnrecy       => :CURRENCYCODE,
+          :fee_amount     => :FEEREFUNDAMT,
+          :gross_amount   => :GROSSREFUNDAMT,
+          :net_amount     => :NETREFUNDAMT,
+          :amount         => :TOTALREFUNDEDAMOUNT,
+          :currency       => :CURRENCYCODE,
           :info           => :REFUNDINFO,
           :status         => :REFUNDSTATUS,
-          :pendingreason  => :PENDINGREASON,
+          :pending_reason => :PENDINGREASON
         )
 
         def completed?
