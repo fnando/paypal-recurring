@@ -19,7 +19,7 @@ describe PayPal::Recurring::Response::Checkout do
 
     its(:valid?) { should be_true }
     its(:errors) { should be_empty }
-    its(:checkout_url) { should == "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=EC-6K296451S2213041J" }
+    its(:checkout_url) { should == "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=EC-6K296451S2213041J&useraction=commit" }
   end
 
   context "when failure" do
