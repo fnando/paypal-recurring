@@ -1,26 +1,38 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: https://api-3t.sandbox.paypal.com:443/nvp
-    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&METHOD=CreateRecurringPaymentsProfile
-    headers: 
-      user-agent: 
-      - PayPal::Recurring/0.1.0
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=fnando.vieira%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&METHOD=CreateRecurringPaymentsProfile
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
       - application/x-www-form-urlencoded
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+      connection:
+      - close
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      date: 
-      - Mon, 27 Jun 2011 11:03:37 GMT
-      server: 
+    headers:
+      date:
+      - Mon, 23 Apr 2012 03:57:47 GMT
+      server:
       - Apache
-      content-length: 
-      - "933"
-      content-type: 
+      content-length:
+      - '933'
+      connection:
+      - close
+      content-type:
       - text/plain; charset=utf-8
-    body: TIMESTAMP=2011%2d06%2d27T11%3a03%3a38Z&CORRELATIONID=cc5d656723747&ACK=Failure&VERSION=72%2e0&BUILD=1907759&L_ERRORCODE0=11585&L_ERRORCODE1=11518&L_ERRORCODE2=11516&L_ERRORCODE3=11519&L_ERRORCODE4=11549&L_SHORTMESSAGE0=Missing%20Token%20or%20payment%20source&L_SHORTMESSAGE1=Invalid%20billing%20period%2e&L_SHORTMESSAGE2=Invalid%20billing%20frequency&L_SHORTMESSAGE3=Invalid%20amount&L_SHORTMESSAGE4=Start%20Date%20is%20required&L_LONGMESSAGE0=Missing%20Token%20or%20buyer%20credit%20card&L_LONGMESSAGE1=Billing%20period%20must%20be%20one%20of%20Day%2c%20Week%2c%20SemiMonth%2c%20or%20Year&L_LONGMESSAGE2=Billing%20frequency%20must%20be%20%3e%200%20and%20be%20less%20than%20or%20equal%20to%20one%20year&L_LONGMESSAGE3=Bill%20amount%20must%20be%20greater%20than%200&L_LONGMESSAGE4=Subscription%20start%20date%20is%20required&L_SEVERITYCODE0=Error&L_SEVERITYCODE1=Error&L_SEVERITYCODE2=Error&L_SEVERITYCODE3=Error&L_SEVERITYCODE4=Error
-    http_version: "1.1"
+    body:
+      encoding: US-ASCII
+      string: TIMESTAMP=2012%2d04%2d23T03%3a57%3a48Z&CORRELATIONID=5bb3a49b407e3&ACK=Failure&VERSION=72%2e0&BUILD=2764190&L_ERRORCODE0=11585&L_ERRORCODE1=11518&L_ERRORCODE2=11516&L_ERRORCODE3=11519&L_ERRORCODE4=11549&L_SHORTMESSAGE0=Missing%20Token%20or%20payment%20source&L_SHORTMESSAGE1=Invalid%20billing%20period%2e&L_SHORTMESSAGE2=Invalid%20billing%20frequency&L_SHORTMESSAGE3=Invalid%20amount&L_SHORTMESSAGE4=Start%20Date%20is%20required&L_LONGMESSAGE0=Missing%20Token%20or%20buyer%20credit%20card&L_LONGMESSAGE1=Billing%20period%20must%20be%20one%20of%20Day%2c%20Week%2c%20SemiMonth%2c%20or%20Year&L_LONGMESSAGE2=Billing%20frequency%20must%20be%20%3e%200%20and%20be%20less%20than%20or%20equal%20to%20one%20year&L_LONGMESSAGE3=Bill%20amount%20must%20be%20greater%20than%200&L_LONGMESSAGE4=Subscription%20start%20date%20is%20required&L_SEVERITYCODE0=Error&L_SEVERITYCODE1=Error&L_SEVERITYCODE2=Error&L_SEVERITYCODE3=Error&L_SEVERITYCODE4=Error
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 03:57:48 GMT
+recorded_with: VCR 2.1.0

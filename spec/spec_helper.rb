@@ -4,10 +4,11 @@ Bundler.require
 
 require "paypal-recurring"
 require "vcr"
+require "active_support/all"
 
-VCR.config do |config|
+VCR.configure do |config|
   config.cassette_library_dir = File.dirname(__FILE__) + "/fixtures"
-  config.stub_with :fakeweb
+  config.hook_into :fakeweb
 end
 
 RSpec.configure do |config|
@@ -16,11 +17,11 @@ RSpec.configure do |config|
   config.before do
     PayPal::Recurring.configure do |config|
       config.sandbox = true
-      config.username = "seller_1308793919_biz_api1.simplesideias.com.br"
-      config.password = "1308793931"
-      config.signature = "AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y"
-      config.seller_id = "GSZCRUB62BL5L"
-      config.email = "seller_1308793919_biz_api1.simplesideias.com.br"
+      config.username = "fnando.vieira+seller_api1.gmail.com"
+      config.password = "PRTZZX6JDACB95SA"
+      config.signature = "AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt"
+      config.seller_id = "F2RM85WS56YX2"
+      config.email = "fnando.vieira+seller.gmail.com"
     end
   end
 end

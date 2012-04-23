@@ -1,26 +1,38 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: https://api-3t.sandbox.paypal.com:443/nvp
-    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&TOKEN=EC-7B902269MT603740W&METHOD=GetExpressCheckoutDetails
-    headers: 
-      user-agent: 
-      - PayPal::Recurring/0.1.0
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=fnando.vieira%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&TOKEN=EC-08C2125544495393T&METHOD=GetExpressCheckoutDetails
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
       - application/x-www-form-urlencoded
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+      connection:
+      - close
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      date: 
-      - Sun, 26 Jun 2011 23:21:45 GMT
-      server: 
+    headers:
+      date:
+      - Mon, 23 Apr 2012 03:46:33 GMT
+      server:
       - Apache
-      content-length: 
-      - "1013"
-      content-type: 
+      content-length:
+      - '1048'
+      connection:
+      - close
+      content-type:
       - text/plain; charset=utf-8
-    body: TOKEN=EC%2d7B902269MT603740W&BILLINGAGREEMENTACCEPTEDSTATUS=1&CHECKOUTSTATUS=PaymentActionNotInitiated&TIMESTAMP=2011%2d06%2d26T23%3a21%3a45Z&CORRELATIONID=3013e52c8b3d2&ACK=Success&VERSION=72%2e0&BUILD=1936884&EMAIL=buyer_1308979708_per%40simplesideias%2ecom%2ebr&PAYERID=WTTS5KC2T46YU&PAYERSTATUS=verified&FIRSTNAME=Test&LASTNAME=User&COUNTRYCODE=US&CURRENCYCODE=USD&AMT=9%2e00&SHIPPINGAMT=0%2e00&HANDLINGAMT=0%2e00&TAXAMT=0%2e00&DESC=Awesome%20%2d%20Monthly%20Subscription&NOTIFYURL=http%3a%2f%2fexample%2ecom%2fpaypal%2fipn&INSURANCEAMT=0%2e00&SHIPDISCAMT=0%2e00&PAYMENTREQUEST_0_CURRENCYCODE=USD&PAYMENTREQUEST_0_AMT=9%2e00&PAYMENTREQUEST_0_SHIPPINGAMT=0%2e00&PAYMENTREQUEST_0_HANDLINGAMT=0%2e00&PAYMENTREQUEST_0_TAXAMT=0%2e00&PAYMENTREQUEST_0_DESC=Awesome%20%2d%20Monthly%20Subscription&PAYMENTREQUEST_0_NOTIFYURL=http%3a%2f%2fexample%2ecom%2fpaypal%2fipn&PAYMENTREQUEST_0_INSURANCEAMT=0%2e00&PAYMENTREQUEST_0_SHIPDISCAMT=0%2e00&PAYMENTREQUEST_0_INSURANCEOPTIONOFFERED=false&PAYMENTREQUESTINFO_0_ERRORCODE=0
-    http_version: "1.1"
+    body:
+      encoding: US-ASCII
+      string: TOKEN=EC%2d08C2125544495393T&BILLINGAGREEMENTACCEPTEDSTATUS=1&CHECKOUTSTATUS=PaymentActionNotInitiated&TIMESTAMP=2012%2d04%2d23T03%3a46%3a33Z&CORRELATIONID=2d6423eb9e64d&ACK=Success&VERSION=72%2e0&BUILD=2808426&EMAIL=fnando%2evieira%2bbr%40gmail%2ecom&PAYERID=D2U7M6PTMJBML&PAYERSTATUS=unverified&FIRSTNAME=Jos%c3%a9&LASTNAME=da%20Silva&COUNTRYCODE=BR&TAXIDTYPE=BR_CPF&TAXID=42519601140&CURRENCYCODE=BRL&AMT=9%2e00&SHIPPINGAMT=0%2e00&HANDLINGAMT=0%2e00&TAXAMT=0%2e00&DESC=Awesome%20%2d%20Monthly%20Subscription&NOTIFYURL=http%3a%2f%2fexample%2ecom%2fpaypal%2fipn&INSURANCEAMT=0%2e00&SHIPDISCAMT=0%2e00&PAYMENTREQUEST_0_CURRENCYCODE=BRL&PAYMENTREQUEST_0_AMT=9%2e00&PAYMENTREQUEST_0_SHIPPINGAMT=0%2e00&PAYMENTREQUEST_0_HANDLINGAMT=0%2e00&PAYMENTREQUEST_0_TAXAMT=0%2e00&PAYMENTREQUEST_0_DESC=Awesome%20%2d%20Monthly%20Subscription&PAYMENTREQUEST_0_NOTIFYURL=http%3a%2f%2fexample%2ecom%2fpaypal%2fipn&PAYMENTREQUEST_0_INSURANCEAMT=0%2e00&PAYMENTREQUEST_0_SHIPDISCAMT=0%2e00&PAYMENTREQUEST_0_INSURANCEOPTIONOFFERED=false&PAYMENTREQUESTINFO_0_ERRORCODE=0
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 03:46:34 GMT
+recorded_with: VCR 2.1.0

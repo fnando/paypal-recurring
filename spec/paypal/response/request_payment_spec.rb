@@ -8,9 +8,9 @@ describe PayPal::Recurring::Response::Payment do
       ppr = PayPal::Recurring.new({
         :description => "Awesome - Monthly Subscription",
         :amount      => "9.00",
-        :currency    => "USD",
-        :payer_id    => "WTTS5KC2T46YU",
-        :token       => "EC-7A593227AC789800N",
+        :currency    => "BRL",
+        :payer_id    => "D2U7M6PTMJBML",
+        :token       => "EC-7DE19186NP195863W",
       })
       ppr.request_payment
     }
@@ -30,6 +30,6 @@ describe PayPal::Recurring::Response::Payment do
     it { should_not be_completed }
     it { should_not be_approved }
 
-    its(:errors) { should have(1).items }
+    its(:errors) { should have(2).items }
   end
 end

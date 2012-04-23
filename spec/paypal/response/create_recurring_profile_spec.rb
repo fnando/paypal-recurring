@@ -9,14 +9,14 @@ describe PayPal::Recurring::Response::Profile do
         :amount                => "9.00",
         :initial_amount        => "9.00",
         :initial_amount_action => :cancel,
-        :currency              => "USD",
+        :currency              => "BRL",
         :description           => "Awesome - Monthly Subscription",
         :ipn_url               => "http://example.com/paypal/ipn",
         :frequency             => 1,
-        :token                 => "EC-2UK36172XH723314S",
+        :token                 => "EC-47J551124P900104V",
         :period                => :monthly,
         :reference             => "1234",
-        :payer_id              => "WTTS5KC2T46YU",
+        :payer_id              => "D2U7M6PTMJBML",
         :start_at              => Time.now,
         :failed                => 1,
         :outstanding           => :next_billing
@@ -26,7 +26,7 @@ describe PayPal::Recurring::Response::Profile do
 
     it { should be_valid }
 
-    its(:profile_id) { should == "I-89LD5VEHEVK4" }
+    its(:profile_id) { should == "I-W4FNTE6EXJ2W" }
     its(:status) { should == "ActiveProfile" }
     its(:errors) { should be_empty }
   end

@@ -5,7 +5,7 @@ describe PayPal::Recurring::Response::Details do
     use_vcr_cassette "details/success"
 
     subject {
-      ppr = PayPal::Recurring.new(:token => "EC-7B902269MT603740W")
+      ppr = PayPal::Recurring.new(:token => "EC-08C2125544495393T")
       ppr.checkout_details
     }
 
@@ -14,13 +14,12 @@ describe PayPal::Recurring::Response::Details do
 
     its(:errors) { should be_empty }
     its(:status) { should == "PaymentActionNotInitiated" }
-    its(:email) { should == "buyer_1308979708_per@simplesideias.com.br" }
+    its(:email) { should == "fnando.vieira+br@gmail.com" }
     its(:requested_at) { should be_a(Time) }
-    its(:email) { should == "buyer_1308979708_per@simplesideias.com.br" }
-    its(:payer_id) { should == "WTTS5KC2T46YU" }
-    its(:payer_status) { should == "verified" }
-    its(:country) { should == "US" }
-    its(:currency) { should == "USD" }
+    its(:payer_id) { should == "D2U7M6PTMJBML" }
+    its(:payer_status) { should == "unverified" }
+    its(:country) { should == "BR" }
+    its(:currency) { should == "BRL" }
     its(:description) { should == "Awesome - Monthly Subscription" }
     its(:ipn_url) { should == "http://example.com/paypal/ipn" }
     its(:agreed?) { should be_true }
@@ -29,7 +28,7 @@ describe PayPal::Recurring::Response::Details do
   context "when cancelled" do
     use_vcr_cassette "details/cancelled"
     subject {
-      ppr = PayPal::Recurring.new(:token => "EC-365619347A138351P")
+      ppr = PayPal::Recurring.new(:token => "EC-8J298813NS092694P")
       ppr.checkout_details
     }
 

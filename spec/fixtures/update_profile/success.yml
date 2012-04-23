@@ -1,27 +1,38 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: https://api-3t.sandbox.paypal.com:443/nvp
-    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_AMT=9.00&AMT=9.00&PAYMENTREQUEST_0_CURRENCYCODE=USD&CURRENCYCODE=USD&DESC=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_DESC=Awesome%20-%20Monthly%20Subscription&L_BILLINGAGREEMENTDESCRIPTION0=Awesome%20-%20Monthly%20Subscription&PAYERID=WTTS5KC2T46YU&TOKEN=EC-2UK36172XH723314S&PROFILEREFERENCE=1234&PROFILESTARTDATE=2011-06-27T07%3a59%3a54Z&MAXFAILEDPAYMENTS=1&AUTOBILLOUTAMT=AddToNextBilling&PAYMENTREQUEST_0_NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&BILLINGFREQUENCY=1&BILLINGPERIOD=Month&METHOD=UpdateRecurringPaymentsProfile
-    headers: 
-      user-agent: 
-      - PayPal::Recurring/0.1.0
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=fnando.vieira%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&PAYMENTREQUEST_0_AMT=10.00&AMT=10.00&PAYMENTREQUEST_0_CURRENCYCODE=BRL&CURRENCYCODE=BRL&DESC=Awesome+-+Monthly+Subscription+%28Updated%29&PAYMENTREQUEST_0_DESC=Awesome+-+Monthly+Subscription+%28Updated%29&L_BILLINGAGREEMENTDESCRIPTION0=Awesome+-+Monthly+Subscription+%28Updated%29&NOTE=Changed+Plan&PROFILEID=I-6BWVV63V49JT&METHOD=UpdateRecurringPaymentsProfile
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
       - application/x-www-form-urlencoded
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+      connection:
+      - close
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      date: 
-      - Mon, 27 Jun 2011 10:59:58 GMT
-      server: 
+    headers:
+      date:
+      - Mon, 23 Apr 2012 04:33:19 GMT
+      server:
       - Apache
-      content-length: 
-      - "162"
-      content-type: 
+      content-length:
+      - '134'
+      connection:
+      - close
+      content-type:
       - text/plain; charset=utf-8
-    body: PROFILEID=I%2d89LD5VEHEVK4&PROFILESTATUS=ActiveProfile&TIMESTAMP=2011%2d06%2d27T11%3a00%3a01Z&CORRELATIONID=17ea90bec34e6&ACK=Success&VERSION=72%2e0&BUILD=1907759
-    http_version: "1.1"
-    
+    body:
+      encoding: US-ASCII
+      string: PROFILEID=I%2d6BWVV63V49JT&TIMESTAMP=2012%2d04%2d23T04%3a33%3a25Z&CORRELATIONID=31b9058f89254&ACK=Success&VERSION=72%2e0&BUILD=2764190
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 04:33:25 GMT
+recorded_with: VCR 2.1.0

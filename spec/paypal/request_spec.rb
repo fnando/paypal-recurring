@@ -17,6 +17,15 @@ describe PayPal::Recurring::Request do
   end
 
   describe "#post" do
+    before :all do
+      VCR.eject_cassette
+      VCR.turn_off!
+    end
+
+    after :all do
+      VCR.turn_on!
+    end
+
     let(:request) {
       FakeWeb.register_uri :post, "https://api-3t.sandbox.paypal.com/nvp", :status => 200
       subject.run(:checkout)
@@ -90,7 +99,7 @@ describe PayPal::Recurring::Request do
       subject.normalize_params(:trial_period => :daily).should == {:TRIALBILLINGPERIOD => "Day"}
       subject.normalize_params(:trial_period => :yearly).should == {:TRIALBILLINGPERIOD => "Year"}
     end
-    
+
     it "normalizes start at" do
       date = Time.parse("2011-06-26 15:13:00")
       subject.normalize_params(:start_at => date).should == {:PROFILESTARTDATE => "2011-06-26T15:13:00Z"}

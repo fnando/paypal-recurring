@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=fnando.vieira%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&PROFILEID=I-6BWVV63V49JT&METHOD=GetRecurringPaymentsProfileDetails
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
+      - application/x-www-form-urlencoded
+      connection:
+      - close
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 23 Apr 2012 04:34:46 GMT
+      server:
+      - Apache
+      content-length:
+      - '989'
+      connection:
+      - close
+      content-type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: US-ASCII
+      string: PROFILEID=I%2d6BWVV63V49JT&STATUS=Active&AUTOBILLOUTAMT=NoAutoBill&DESC=Awesome%20%2d%20Monthly%20Subscription%20%28Updated%29&MAXFAILEDPAYMENTS=0&SUBSCRIBERNAME=Jos%c3%a9%20da%20Silva&PROFILESTARTDATE=2012%2d07%2d23T03%3a00%3a00Z&PROFILEREFERENCE=1234&NEXTBILLINGDATE=2012%2d07%2d23T10%3a00%3a00Z&NUMCYCLESCOMPLETED=0&NUMCYCLESREMAINING=0&OUTSTANDINGBALANCE=0%2e00&FAILEDPAYMENTCOUNT=0&LASTPAYMENTDATE=2012%2d04%2d23T04%3a31%3a15Z&LASTPAYMENTAMT=9%2e00&TRIALAMTPAID=0%2e00&REGULARAMTPAID=0%2e00&AGGREGATEAMT=0%2e00&AGGREGATEOPTIONALAMT=9%2e00&FINALPAYMENTDUEDATE=1970%2d01%2d01T00%3a00%3a00Z&TIMESTAMP=2012%2d04%2d23T04%3a34%3a47Z&CORRELATIONID=39a69e9af3257&ACK=Success&VERSION=72%2e0&BUILD=2764190&BILLINGPERIOD=Day&BILLINGFREQUENCY=1&TOTALBILLINGCYCLES=0&CURRENCYCODE=BRL&AMT=10%2e00&SHIPPINGAMT=0%2e00&TAXAMT=0%2e00&REGULARBILLINGPERIOD=Day&REGULARBILLINGFREQUENCY=1&REGULARTOTALBILLINGCYCLES=0&REGULARCURRENCYCODE=BRL&REGULARAMT=10%2e00&REGULARSHIPPINGAMT=0%2e00&REGULARTAXAMT=0%2e00
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 04:34:47 GMT
+recorded_with: VCR 2.1.0

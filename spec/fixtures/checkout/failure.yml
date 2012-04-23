@@ -1,26 +1,38 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: https://api-3t.sandbox.paypal.com:443/nvp
-    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_PAYMENTACTION=Authorization&NOSHIPPING=1&L_BILLINGTYPE0=RecurringPayments&METHOD=SetExpressCheckout
-    headers: 
-      user-agent: 
-      - PayPal::Recurring/0.1.0
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_PAYMENTACTION=Authorization&NOSHIPPING=1&L_BILLINGTYPE0=RecurringPayments&METHOD=SetExpressCheckout
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
       - application/x-www-form-urlencoded
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+      connection:
+      - close
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      date: 
-      - Sun, 26 Jun 2011 23:40:00 GMT
-      server: 
+    headers:
+      date:
+      - Mon, 23 Apr 2012 03:04:47 GMT
+      server:
       - Apache
-      content-length: 
-      - "779"
-      content-type: 
+      content-length:
+      - '779'
+      connection:
+      - close
+      content-type:
       - text/plain; charset=utf-8
-    body: TIMESTAMP=2011%2d06%2d26T23%3a40%3a02Z&CORRELATIONID=4cd5b6afca9b2&ACK=Failure&VERSION=72%2e0&BUILD=1936884&L_ERRORCODE0=10478&L_ERRORCODE1=10404&L_ERRORCODE2=10405&L_SHORTMESSAGE0=Invalid%20Data&L_SHORTMESSAGE1=Transaction%20refused%20because%20of%20an%20invalid%20argument%2e%20See%20additional%20error%20messages%20for%20details%2e&L_SHORTMESSAGE2=Transaction%20refused%20because%20of%20an%20invalid%20argument%2e%20See%20additional%20error%20messages%20for%20details%2e&L_LONGMESSAGE0=Recurring%20payments%20profile%20description%20must%20be%20provided%20if%20the%20billing%20agreement%20type%20is%20recurring%20payments%2e&L_LONGMESSAGE1=ReturnURL%20is%20missing%2e&L_LONGMESSAGE2=CancelURL%20is%20missing%2e&L_SEVERITYCODE0=Error&L_SEVERITYCODE1=Error&L_SEVERITYCODE2=Error
-    http_version: "1.1"
+    body:
+      encoding: US-ASCII
+      string: TIMESTAMP=2012%2d04%2d23T03%3a04%3a48Z&CORRELATIONID=367f117161d20&ACK=Failure&VERSION=72%2e0&BUILD=2808426&L_ERRORCODE0=10478&L_ERRORCODE1=10404&L_ERRORCODE2=10405&L_SHORTMESSAGE0=Invalid%20Data&L_SHORTMESSAGE1=Transaction%20refused%20because%20of%20an%20invalid%20argument%2e%20See%20additional%20error%20messages%20for%20details%2e&L_SHORTMESSAGE2=Transaction%20refused%20because%20of%20an%20invalid%20argument%2e%20See%20additional%20error%20messages%20for%20details%2e&L_LONGMESSAGE0=Recurring%20payments%20profile%20description%20must%20be%20provided%20if%20the%20billing%20agreement%20type%20is%20recurring%20payments%2e&L_LONGMESSAGE1=ReturnURL%20is%20missing%2e&L_LONGMESSAGE2=CancelURL%20is%20missing%2e&L_SEVERITYCODE0=Error&L_SEVERITYCODE1=Error&L_SEVERITYCODE2=Error
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 03:04:49 GMT
+recorded_with: VCR 2.1.0

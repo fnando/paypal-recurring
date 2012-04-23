@@ -1,32 +1,50 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: https://www.sandbox.paypal.com:443/cgi-bin/webscr?cmd=_notify-validate
-    body: cmd=_notify-validate
-    headers: 
-      user-agent: 
-      - PayPal::Recurring/0.1.0
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate
+    body:
+      encoding: US-ASCII
+      string: cmd=_notify-validate
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
       - application/x-www-form-urlencoded
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+      connection:
+      - close
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      date: 
-      - Mon, 27 Jun 2011 17:39:42 GMT
-      server: 
+    headers:
+      date:
+      - Mon, 23 Apr 2012 03:00:03 GMT
+      server:
       - Apache
-      set-cookie: 
-      - c9MWDuvPtT9GIMyPc3jwol1VSlO=FYMA2gxaecqXl8Q9SSeevuaQcqfcQcwNGw_shFaqV4wYiWT3ZUcQ4O8NLvXqevPJfliR0yse8Z4bzZ8A37MQKM6Q_ci6wnYOkfGZSxZYa_hNLMvR6QHnGyW6u94YxhYQpgu0VG%7cySXso7WZVjU8pXiTJS488DAO3YqW5S6DsAZMY8TN22H5J8gW1As5DlqX1pm60R5dWee5wm%7cdMLFsFZz_xjN2U4nbQ71pdvMUEch5_rqq4NReBSNMz7j3ry9JJhQ1J0X6pqjinKs-kO5NG%7c1309196387; domain=.paypal.com; path=/; Secure; HttpOnly
-      - cookie_check=yes; expires=Thu, 24-Jun-2021 17:39:47 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+      x-frame-options:
+      - SAMEORIGIN
+      set-cookie:
+      - c9MWDuvPtT9GIMyPc3jwol1VSlO=phiV3ZAWvCkZSenfDn1tp5SJRGYAY1V1oXZXt-oQMLjTRqt68RVoOxNBcZgxuINkTESymvIqEmaapr8-2zon9XoeH-ehyhlJbZX6JoYeFdJUbu4h9hvZmOqepdkOaZWfGkQYTG%7cdgcesLmy-LDirS8qpI0_SY5acTNGUmVqz9USdhYSfIaD4vAyicZW0hiNfDsS5RMEO4KAaG%7cfG9ex3VMD0NUmpCKlPC1URU9q7KZPbJyYkc897cvk-DO4OD7pMRo0Jn412SUgu6ZYWH8Nm%7c1335150004;
+        domain=.paypal.com; path=/; Secure; HttpOnly
+      - cookie_check=yes; expires=Thu, 21-Apr-2022 03:00:04 GMT; domain=.paypal.com;
+        path=/; Secure; HttpOnly
       - navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
-      - navlns=0.0; expires=Sun, 22-Jun-2031 17:39:47 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
-      - Apache=10.72.109.11.1309196382543853; path=/; expires=Wed, 19-Jun-41 17:39:42 GMT
-      transfer-encoding: 
+      - navlns=0.0; expires=Sun, 18-Apr-2032 03:00:04 GMT; domain=.paypal.com; path=/;
+        Secure; HttpOnly
+      - Apache=10.72.109.11.1335150003601166; path=/; expires=Wed, 16-Apr-42 03:00:03
+        GMT
+      connection:
+      - close
+      transfer-encoding:
       - chunked
-      content-type: 
+      content-type:
       - text/html; charset=UTF-8
-    body: INVALID
-    http_version: "1.1"
+    body:
+      encoding: US-ASCII
+      string: INVALID
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 03:00:04 GMT
+recorded_with: VCR 2.1.0

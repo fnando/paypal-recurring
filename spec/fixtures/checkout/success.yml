@@ -1,26 +1,38 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: https://api-3t.sandbox.paypal.com:443/nvp
-    body: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_AMT=9.00&AMT=9.00&RETURNURL=http%3a%2f%2fexample.com%2fthank_you&CANCELURL=http%3a%2f%2fexample.com%2fcanceled&PAYMENTREQUEST_0_CURRENCYCODE=USD&CURRENCYCODE=USD&DESC=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_DESC=Awesome%20-%20Monthly%20Subscription&L_BILLINGAGREEMENTDESCRIPTION0=Awesome%20-%20Monthly%20Subscription&PAYMENTREQUEST_0_NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&NOTIFYURL=http%3a%2f%2fexample.com%2fpaypal%2fipn&PAYMENTREQUEST_0_PAYMENTACTION=Authorization&NOSHIPPING=1&L_BILLINGTYPE0=RecurringPayments&METHOD=SetExpressCheckout
-    headers: 
-      user-agent: 
-      - PayPal::Recurring/0.1.0
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=seller_1308793919_biz_api1.simplesideias.com.br&PWD=1308793931&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AzaB6TzXx5amObyEghjU13.0av2Y&VERSION=72.0&PAYMENTREQUEST_0_AMT=9.00&AMT=9.00&RETURNURL=http%3A%2F%2Fexample.com%2Fthank_you&CANCELURL=http%3A%2F%2Fexample.com%2Fcanceled&PAYMENTREQUEST_0_CURRENCYCODE=USD&CURRENCYCODE=USD&DESC=Awesome+-+Monthly+Subscription&PAYMENTREQUEST_0_DESC=Awesome+-+Monthly+Subscription&L_BILLINGAGREEMENTDESCRIPTION0=Awesome+-+Monthly+Subscription&PAYMENTREQUEST_0_NOTIFYURL=http%3A%2F%2Fexample.com%2Fpaypal%2Fipn&NOTIFYURL=http%3A%2F%2Fexample.com%2Fpaypal%2Fipn&PAYMENTREQUEST_0_PAYMENTACTION=Authorization&NOSHIPPING=1&L_BILLINGTYPE0=RecurringPayments&METHOD=SetExpressCheckout
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
       - application/x-www-form-urlencoded
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+      connection:
+      - close
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      date: 
-      - Sun, 26 Jun 2011 21:44:13 GMT
-      server: 
+    headers:
+      date:
+      - Mon, 23 Apr 2012 03:04:44 GMT
+      server:
       - Apache
-      content-length: 
-      - "136"
-      content-type: 
+      content-length:
+      - '136'
+      connection:
+      - close
+      content-type:
       - text/plain; charset=utf-8
-    body: TOKEN=EC%2d7B902269MT603740W&TIMESTAMP=2011%2d06%2d26T21%3a44%3a14Z&CORRELATIONID=d7914d1fd83b9&ACK=Success&VERSION=72%2e0&BUILD=1936884
-    http_version: "1.1"
+    body:
+      encoding: US-ASCII
+      string: TOKEN=EC%2d6K296451S2213041J&TIMESTAMP=2012%2d04%2d23T03%3a04%3a44Z&CORRELATIONID=f5242d7256b62&ACK=Success&VERSION=72%2e0&BUILD=2808426
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 03:04:45 GMT
+recorded_with: VCR 2.1.0
