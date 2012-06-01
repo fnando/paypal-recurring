@@ -21,17 +21,17 @@ describe PayPal::Recurring::Notification do
     subject.paid_at.strftime("%Y-%m-%d %H:%M:%S").should == "2011-07-05 03:37:06"
   end
 
+  it "normalizes creation date" do
+    subject.params[:time_created] = "20:37:06 Jul 04, 2011 PDT" # PDT = -0700
+    subject.created_at.strftime("%Y-%m-%d %H:%M:%S").should == "2011-07-05 03:37:06"
+  end
+
   it "returns currency" do
     subject.params[:mc_currency] = "BRL"
     subject.currency.should == "BRL"
   end
 
   describe "#payment_date" do
-    it "returns date from time_created field" do
-      subject.params[:time_created] = "2011-07-05"
-      subject.payment_date.should == "2011-07-05"
-    end
-
     it "returns date from payment_date field" do
       subject.params[:payment_date] = "2011-07-05"
       subject.payment_date.should == "2011-07-05"

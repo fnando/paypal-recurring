@@ -16,7 +16,8 @@ module PayPal
         :status           => :payment_status,
         :pending_reason   => :pending_reason,
         :profile_status   => :profile_status,
-        :payment_date     => [:time_created, :payment_date],
+        :payment_date     => :payment_date,
+        :time_created     => :time_created,
         :seller_id        => :receiver_id,
         :email            => :receiver_email,
         :initial_amount   => :initial_payment_amount,
@@ -69,6 +70,10 @@ module PayPal
 
       def paid_at
         self.class.convert_to_time(payment_date) if payment_date
+      end
+
+      def created_at
+        self.class.convert_to_time(time_created) if time_created
       end
 
       def verified?

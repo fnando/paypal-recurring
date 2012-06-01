@@ -33,6 +33,7 @@ describe PayPal::Recurring::Response::Profile do
 
   context "when failure" do
     use_vcr_cassette("update_profile/failure")
+
     let(:paypal) {
       PayPal::Recurring.new({
         :profile_id => "I-W4FNTE6EXJ2W",
